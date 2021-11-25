@@ -79,3 +79,12 @@ h2{
     margin: 15px 0;
 }
 
+.toast{
+    font-size: 30px;
+    color: #23235b;
+    opacity: 0.8;
+    position: fixed;
+    top: 60px;
+    display: flex;
+}
+

@@ -26,6 +26,10 @@ generateEl.addEventListener('click', ()=> {
 })
 
 function generatePassword(lower, upper, number, symbol, length){
+    if(length > 20) {
+        lengthEl.value = 20;
+        length = 20
+    }
 
     let generatedPassword = '';
     const typesCount = lower + upper + number + symbol;
@@ -66,6 +70,7 @@ function getRandomSymbol(){
 clipboardEl.addEventListener('click', (e)=> {
     const textarea = document.createElement('textarea');
     const password = resultEl.innerText;
+    const container = document.querySelector('.container');
 
     if (!password) return '';
 
@@ -74,7 +79,15 @@ clipboardEl.addEventListener('click', (e)=> {
     textarea.select();
     document.execCommand('copy');
     textarea.remove();
-    alert('Password copied to clipboard!')
+
+    // alert('Password copied to clipboard!');
+
+    const notification = document.createElement('div');
+    notification.classList.add('toast');
+    notification.innerText = 'Password copied!';
+    container.appendChild(notification);
+    setTimeout(()=> {
+        notification.remove()
+    }, 1000)
+
 })
-
-
